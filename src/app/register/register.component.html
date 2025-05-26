@@ -1,16 +1,52 @@
-<form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
-  <h2 class="tet-center text-primary">Sign up</h2>
-  <hr />
-  <div class="mb-3 form-floating">
-    <input type="text" name="username" class="form-control" placeholder="Username" [(ngModel)]="model.username" />
-    <label for="">UserName</label>
+<!-- Registration Form HTML Template (Bootstrap + Custom) -->
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 ">
+      <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off" class="signup-section fade-in">
+        <div class="form-header text-center mb-4">
+          <div class="chat-icon mx-auto mb-3">
+            <i class="fa-solid fa-user-plus"></i>
+          </div>
+          <h2 class="mb-2">Create Your Account</h2>
+          <p class="text-muted mb-0">Join our community and start making meaningful connections</p>
+        </div>
+
+        <div class="mb-3">
+          <input
+            type="text"
+            name="username"
+            class="form-control form-input"
+            placeholder="Enter your username"
+            [(ngModel)]="model.username"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <input
+            type="password"
+            name="password"
+            class="form-control form-input"
+            placeholder="Create a secure password"
+            [(ngModel)]="model.password"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <button class="btn btn-primary w-100 custom-btn-primary" type="submit" [disabled]="!registerForm.valid">
+            <i class="fa-solid fa-rocket me-2"></i>
+            Get Started
+          </button>
+        </div>
+
+        <div class="mb-3 text-center">
+          <button class="btn btn-secondary custom-btn-secondary" type="button" (click)="cancel()">
+            <i class="fa-solid fa-arrow-left me-2"></i>
+            Back to Home
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
-  <div class="mb-3 form-floating">
-    <input type="password" name="password" class="form-control" placeholder="password" [(ngModel)]="model.password" />
-    <label for="">password</label>
-  </div>
-  <div class="form-group text-center">
-    <button class="btn btn-success me-2" (click)="register()" type="submit">Register</button>
-    <button class="btn btn-default me-2" (click)="cancel()" type="submit">Cancel</button>
-  </div>
-</form>
+</div>
