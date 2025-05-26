@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-md fixed-top modern-navbar">
+  <div class="container">
+    <!-- Brand -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <div class="brand-icon me-2"><i class="fa-solid fa-comments" style="color: #ffffff;"></i></div>
+      <span class="brand-text">ChatSpace</span>
+    </a>
+
+    <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="toggler-line"></span>
+      <span class="toggler-line"></span>
+      <span class="toggler-line"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+      @if(accountService.currentUser()) {
+        <ul class="navbar-nav me-4">
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLinkActive="active">
+              <span>Chats</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLinkActive="active">
+              <span>Friends</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLinkActive="active">
+              <span>Messages</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="dropdown user-dropdown">
+          <a class="user-avatar dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="avatar-circle">
+              {{accountService.currentUser()?.username?.charAt(0)?.toUpperCase()}}
+            </div>
+            <span class="username d-none d-lg-inline">{{accountService.currentUser()?.username}}</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end modern-dropdown">
+            <li class="dropdown-header">
+              <div class="user-info">
+                <div class="avatar-circle-small">
+                  {{accountService.currentUser()?.username}}
+                </div>
+                <div class="user-details">
+                  <div class="user-name">{{accountService.currentUser()?.username}}</div>
+                  <div class="user-status">Online</div>
+                </div>
+              </div>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-gear"></i>Settings</a></li>
+            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user-pen"></i>Edit Profile</a></li>
+            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-moon"></i>Dark Mode</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item logout-item" (click)="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+          </ul>
+        </div>
+      }
+
+      @if(!accountService.currentUser()) {
+        <form #LoginForm="ngForm" (ngSubmit)="login()" class="login-form" autocomplete="off">
+          <div class="input-group">
+            <input name="username" [(ngModel)]="model.username" class="form-control modern-input" placeholder="Username">
+            <input name="password" [(ngModel)]="model.password" class="form-control modern-input" type="password" placeholder="Password">
+            <button class="btn btn-login" type="submit">
+              <span>Login</span>
+            </button>
+          </div>
+        </form>
+      }
+    </div>
+  </div>
+</nav>

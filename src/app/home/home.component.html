@@ -1,0 +1,26 @@
+<div class="container">
+  @if (!registerMode) {
+  <div class="welcome-section fade-in">
+    <div class="chat-icon">
+      <i class="fa-solid fa-comments" style="color: #ffffff;"></i>
+    </div>
+    <h1>Friendship Starts Here</h1>
+    <p class="lead">Connect with people who share your interests. Discover new friendships, set your preferences, and
+      enjoy meaningful conversations anytime, anywhere.</p>
+    <div class="button-group">
+      <button (click)="registerToggle()" class="btn btn-primary">
+        Get Started
+      </button>
+      <button class="btn btn-secondary">
+        Learn More
+      </button>
+    </div>
+  </div>
+  } @else{
+  <div class="container">
+    <div class="row justify-content-center">
+      <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+    </div>
+  </div>
+  }
+</div>
