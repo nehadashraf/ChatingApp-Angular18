@@ -1,0 +1,200 @@
+/* 404 Not Found Page Custom Styles (Bootstrap + Custom CSS) */
+
+/* Main container styling */
+.not-found-section {
+  background: white;
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Error icon styling */
+.error-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #4F46E5, #7C3AED);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: white;
+}
+
+/* Error code styling */
+.error-code {
+  position: relative;
+}
+
+.error-code .display-1 {
+  color: #4F46E5 !important;
+  text-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
+  font-size: 4rem;
+  line-height: 1;
+}
+
+/* Error header */
+.error-header h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.error-header p {
+  color: #64748b !important;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Suggestion items */
+.suggestion-item {
+  padding: 1rem;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+  height: 100%;
+}
+
+.suggestion-item:hover {
+  background: #f1f5f9;
+  transform: translateY(-2px);
+}
+
+.suggestion-item i {
+  font-size: 1.25rem;
+  display: block;
+}
+
+.suggestion-item p {
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Custom primary button */
+.custom-btn-primary {
+  background: #4F46E5 !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.custom-btn-primary:hover {
+  background: #4338CA !important;
+  transform: translateY(-1px);
+}
+
+/* Custom secondary button */
+.custom-btn-secondary {
+  background: #f1f5f9 !important;
+  color: #475569 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.custom-btn-secondary:hover {
+  background: #e2e8f0 !important;
+  color: #475569 !important;
+  transform: translateY(-1px);
+}
+
+/* Help link */
+.help-link {
+  color: #4F46E5 !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.help-link:hover {
+  color: #4338CA !important;
+  text-decoration: underline !important;
+}
+
+/* Animation */
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .not-found-section {
+    padding: 2.5rem 2rem;
+  }
+
+  .error-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+
+  .error-code .display-1 {
+    font-size: 3rem;
+  }
+
+  .error-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .suggestion-item {
+    padding: 0.875rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .not-found-section {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+  }
+
+  .error-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.75rem;
+  }
+
+  .error-code .display-1 {
+    font-size: 2.5rem;
+  }
+
+  .error-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .error-header p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .not-found-section {
+    padding: 1.5rem 1rem;
+  }
+
+  .custom-btn-primary,
+  .custom-btn-secondary {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}

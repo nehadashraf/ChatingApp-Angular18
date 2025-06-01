@@ -1,0 +1,192 @@
+.error-section {
+  background: white;
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.error-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #DC2626, #EF4444);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: white;
+}
+
+.error-code {
+  position: relative;
+}
+
+.error-code .display-1 {
+  color: #DC2626 !important;
+  text-shadow: 0 2px 4px rgba(220, 38, 38, 0.1);
+  font-size: 4rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.error-header h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.error-header p {
+  color: #64748b !important;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.error-message {
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.error-message-title {
+  color: #DC2626;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.error-message-text {
+  color: #991B1B;
+  font-weight: 500;
+  background: white;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #FCA5A5;
+}
+.custom-btn-primary {
+  background: #DC2626 !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  color: white !important;
+}
+
+.custom-btn-primary:hover {
+  background: #B91C1C !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+.custom-btn-secondary {
+  background: #f1f5f9 !important;
+  color: #475569 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.custom-btn-secondary:hover {
+  background: #e2e8f0 !important;
+  color: #475569 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation */
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .error-section {
+    padding: 2.5rem 2rem;
+  }
+
+  .error-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+
+  .error-code .display-1 {
+    font-size: 3rem;
+  }
+
+  .error-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .suggestion-item {
+    padding: 1rem;
+  }
+
+  .troubleshooting-section,
+  .error-message,
+  .stack-trace-section {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .error-section {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+  }
+
+  .error-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.75rem;
+  }
+
+  .error-code .display-1 {
+    font-size: 2.5rem;
+  }
+
+  .error-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .error-header p {
+    font-size: 0.95rem;
+  }
+
+  .troubleshooting-section,
+  .error-message,
+  .stack-trace-section {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .error-section {
+    padding: 1.5rem 1rem;
+  }
+
+  .custom-btn-primary,
+  .custom-btn-secondary {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
