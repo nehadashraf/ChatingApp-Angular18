@@ -20,6 +20,8 @@ export class RegisterComponent {
   register() {
     this.accountService.register(this.model).subscribe({
       next: (response) => {
+        console.log(response);
+        console.log(this.model);
         this.toastr.success('Registration successful');
         this.cancel();
       },

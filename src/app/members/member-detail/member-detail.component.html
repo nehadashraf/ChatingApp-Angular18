@@ -1,1 +1,219 @@
-<p>member-detail works!</p>
+<div *ngIf="!member" class="d-flex justify-content-center align-items-center" style="min-height: 400px;">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<div *ngIf="member" class="container-fluid p-0">
+  <div class="header-section position-relative">
+    <div class="background-gradient"></div>
+    <div class="container">
+      <div class="row align-items-center pt-5 pb-4">
+        <div class="">
+          <div class="profile-card d-flex align-items-center animate__animated animate__fadeInUp">
+            <div class="profile-image-container me-4">
+              <img [src]="member.photoUrl || 'assets/images/default-avatar.jpg'" [alt]="member.knownAs"
+                class="profile-image animate__animated animate__zoomIn">
+              <div class="online-indicator" *ngIf="member.lastActive"></div>
+            </div>
+
+            <div class="profile-info text-white">
+              <div>
+                <h1 class="profile-name mb-2 animate__animated animate__fadeInLeft animate__delay-1s">
+                  {{ member.knownAs }}
+                </h1>
+                <p class="profile-title mb-1 animate__animated animate__fadeInLeft animate__delay-2s">
+                  Interface and Brand Designer
+                </p>
+                <p class="profile-location mb-3 animate__animated animate__fadeInLeft animate__delay-2s">
+                  <i class="fas fa-map-marker-alt me-2"></i>
+                  {{ member.city }}, {{ member.country }}
+                </p>
+              </div>
+              <div class="profile-actions d-flex gap-2 ">
+                <button class="btn ">
+                  <i class="fas fa-heart me-2"></i>Follow
+                </button>
+                <button class="btn">
+                  <i class="fas fa-user-plus me-2"></i>Add Friend
+                </button>
+                <button class="btn ">
+                  <i class="fas fa-envelope me-2"></i>Get in touch
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <nav class="content-nav">
+      <ul class="nav nav-tabs border-0 animate__animated animate__fadeInUp animate__delay-1s">
+        <li class="nav-item">
+          <a class="nav-link active" href="#about" data-bs-toggle="tab">
+            <i class="fas fa-user me-2"></i>About
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#interests" data-bs-toggle="tab">
+            <i class="fas fa-heart me-2"></i>Interests
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#photos" data-bs-toggle="tab">
+            <i class="fas fa-images me-2"></i>Photos
+            <span class="badge bg-light text-dark ms-2">{{ member.photos.length || 0 }}</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact" data-bs-toggle="tab">
+            <i class="fas fa-envelope me-2"></i>Contact
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container mt-4">
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="about">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="card shadow-sm border-0 animate__animated animate__fadeInLeft">
+              <div class="card-body p-4">
+                <h5 class="card-title mb-3">
+                  <i class="fas fa-user-circle me-2 text-primary"></i>About {{ member.knownAs }}
+                </h5>
+                <p class="card-text text-muted">
+                  {{ member.introduction || 'No introduction available.' }}
+                </p>
+
+                <hr class="my-4">
+
+                <h6 class="mb-3">
+                  <i class="fas fa-search me-2 text-primary"></i>Looking For
+                </h6>
+                <p class="text-muted">
+                  {{ member.lookingFor || 'Not specified.' }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="card shadow-sm border-0 animate__animated animate__fadeInRight">
+              <div class="card-body p-4">
+                <h5 class="card-title mb-3">
+                  <i class="fas fa-info-circle me-2 text-primary"></i>Details
+                </h5>
+                <div class="detail-item mb-3">
+                  <strong>Username:</strong>
+                  <span class="text-muted ms-2">{{ member.userName }}</span>
+                </div>
+                <div class="detail-item mb-3">
+                  <strong>Age:</strong>
+                  <span class="text-muted ms-2">{{ member.age }} years</span>
+                </div>
+                <div class="detail-item mb-3">
+                  <strong>Gender:</strong>
+                  <span class="text-muted ms-2">{{ member.gender | titlecase }}</span>
+                </div>
+                <div class="detail-item mb-3">
+                  <strong>Location:</strong>
+                  <span class="text-muted ms-2">{{ member.city }}, {{ member.country }}</span>
+                </div>
+                <div class="detail-item mb-3">
+                  <strong>Member Since:</strong>
+                  <span class="text-muted ms-2">{{ member.created | date:'MMM yyyy' }}</span>
+                </div>
+                <div class="detail-item">
+                  <strong>Last Active:</strong>
+                  <span class="text-muted ms-2">{{ member.lastActive | date:'MMM d, yyyy' }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="interests">
+        <div class="card shadow-sm border-0 animate__animated animate__fadeInUp">
+          <div class="card-body p-4">
+            <h5 class="card-title mb-3">
+              <i class="fas fa-heart me-2 text-primary"></i>Interests
+            </h5>
+            <div class="interests-container">
+              <ng-container *ngIf="member.interests; else noInterests">
+                <span *ngFor="let interest of member.interests.split(',')"
+                  class="badge bg-light text-dark me-2 mb-2 p-2 animate__animated animate__fadeInUp"
+                  [style.animation-delay]="'0.1s'">
+                  {{ interest.trim() }}
+                </span>
+              </ng-container>
+              <ng-template #noInterests>
+                <p class="text-muted">No interests specified.</p>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="photos">
+        <div class="photos-container" *ngIf="member.photos.length > 0">
+          <div class="row g-3">
+            <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let photo of member.photos; let i = index">
+              <div class="photo-card" (click)="openPhotoModal(photo.url, i)">
+                <img [src]="photo.url" [alt]="'Photo of ' + member.knownAs" class="photo-img">
+                <div class="photo-overlay">
+                  <i class="fas fa-expand-alt"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="empty-photos" *ngIf="member.photos.length === 0">
+          <div class="text-center py-5">
+            <i class="fas fa-images empty-icon"></i>
+            <h5 class="mt-3">No Photos Yet</h5>
+            <p class="text-muted">{{ member.knownAs }} hasn't added any photos yet.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="contact">
+        <div class="card shadow-sm border-0 animate__animated animate__fadeInUp">
+          <div class="card-body p-4">
+            <h5 class="card-title mb-3">
+              <i class="fas fa-envelope me-2 text-primary"></i>Contact {{ member.knownAs }}
+            </h5>
+            <form>
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="4"
+                  placeholder="Write your message here..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-rounded">
+                <i class="fas fa-paper-plane me-2"></i>Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-0">
+        <img [src]="selectedPhoto" class="modal-photo" alt="Photo">
+      </div>
+    </div>
+  </div>
+</div>

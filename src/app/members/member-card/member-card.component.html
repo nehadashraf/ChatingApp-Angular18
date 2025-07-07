@@ -1,0 +1,35 @@
+<div class="member-card" routerLink="/members/{{member().userName}}" >
+  <div class="member-avatar">
+    <img [src]="member().photoUrl || 'assets/user.png'"
+         [alt]="member().knownAs"
+         onerror="this.src='assets/default-avatar.png'">
+  </div>
+  <div class="member-info">
+    <h3 class="member-name">{{ member().knownAs }}</h3>
+    @if (member().age) {
+      <p class="member-age">{{ member().age }} years old</p>
+    }
+    @if (member().city) {
+      <p class="member-city">
+        <i class="fa-solid fa-location-dot"></i>
+        {{ member().city }}
+      </p>
+    }
+    @if (member().introduction) {
+      <p class="member-intro">
+        {{ member().introduction | slice:0:100 }}{{ (member().introduction?.length ?? 0) > 100 ? '...' : '' }}
+      </p>
+    }
+  </div>
+  <div class="member-actions">
+            <button class="btn btn-secondary btn-sm" title="Add friend">
+          <i class="fa-solid fa-user-plus"></i>
+        </button>
+    <button class="btn btn-secondary btn-sm" title="Like">
+      <i class="fa-solid fa-heart"></i>
+    </button>
+    <button class="btn btn-secondary btn-sm" title="Send message">
+      <i class="fa-solid fa-comment"></i>
+    </button>
+  </div>
+</div>

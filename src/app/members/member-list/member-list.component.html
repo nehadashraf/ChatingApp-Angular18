@@ -1,1 +1,23 @@
-<p>member-list works!</p>
+<div class="container">
+  <div class="header-section fade-in">
+    <div class="chat-icon">
+      <i class="fa-solid fa-users" style="color: #ffffff;"></i>
+    </div>
+    <h1>Discover New Friends</h1>
+    <p class="lead">Browse through our community members and start building meaningful connections today.</p>
+  </div>
+
+  @if (members.length > 0) {
+    <div class="members-grid fade-in">
+      @for (member of members; track member.id) {
+        <app-member-card [member]="member"></app-member-card>
+      }
+    </div>
+  } @else {
+      <div class="empty-icon">
+        <i class="fa-solid fa-user-group"></i>
+      </div>
+      <h3>No Members Found</h3>
+      <p>We're working on finding more members for you. Check back soon!</p>
+  }
+</div>

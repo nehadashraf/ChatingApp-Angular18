@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-errors',
@@ -10,7 +11,7 @@ import { Component, inject } from '@angular/core';
 })
 export class ErrorsComponent {
   private http = inject(HttpClient);
-  baseUrl = ' http://localhost:5091/api/';
+  baseUrl = environment.apiUrl;
   validationErrors: string[] = [];
   getValidationError() {
     this.http.post(this.baseUrl + 'account/register', {}).subscribe({
