@@ -7,9 +7,9 @@
     <p class="lead">Browse through our community members and start building meaningful connections today.</p>
   </div>
 
-  @if (members.length > 0) {
+  @if (memberserivce.members().length > 0) {
     <div class="members-grid fade-in">
-      @for (member of members; track member.id) {
+      @for (member of memberserivce.members(); track member.id) {
         <app-member-card [member]="member"></app-member-card>
       }
     </div>
