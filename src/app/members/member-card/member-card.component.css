@@ -9,6 +9,7 @@
   flex-direction: column;
   gap: 1rem;
   cursor: pointer;
+  height: 400px;
 }
 
 .member-card:hover {
