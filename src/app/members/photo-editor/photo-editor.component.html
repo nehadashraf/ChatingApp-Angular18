@@ -103,7 +103,7 @@
               <button type="button" class="btn btn-sm btn-primary" [disabled]="photo.isMain" (click)="setMainPhoto(photo)">
                 <i class="fas fa-star"></i>
               </button>
-              <button type="button" class="btn btn-sm btn-danger" [disabled]="photo.isMain" (click)="deletePhoto(photo)">
+              <button type="button" class="btn btn-sm btn-danger" (click)="deletePhoto(photo)">
                 <i class="fas fa-trash"></i>
               </button>
             </div>

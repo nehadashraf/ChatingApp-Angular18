@@ -1,40 +1,58 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-6 ">
-      <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off" class="signup-section fade-in">
-        <div class="form-header text-center mb-4">
-          <div class="chat-icon mx-auto mb-3">
+    <div class="col-12 col-md-8 col-lg-6">
+      <form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off" class="signup-section fade-in">
+        <div class="form-header text-center mb-3">
+          <div class="chat-icon mx-auto mb-2">
             <i class="fa-solid fa-user-plus"></i>
           </div>
-          <h2 class="mb-2">Create Your Account</h2>
-          <p class="text-muted mb-0">Join our community and start making meaningful connections</p>
+          <h2 class="mb-1">Create Account</h2>
+          <p class="text-muted mb-0">Join our community</p>
         </div>
+        <div class="row justify-content-around">
 
-        <div class="mb-3">
-          <input type="text" name="username" class="form-control form-input" placeholder="Enter your username"
-            [(ngModel)]="model.username" required />
+
+          <div class="col-md-5">
+            <app-text-input [formControl]="$any(registerForm.controls['username'])" [label]="'Username'"></app-text-input>
+          </div>
+          <div class="col-md-5">
+            <app-text-input [formControl]="$any(registerForm.controls['knownAs'])" [label]="'Known As'"></app-text-input>
+          </div>
+          <div class="col-md-5">
+            <app-date-picker [formControl]="$any(registerForm.controls['dateOfBirth'])" [label]="'Date of Birth'" ></app-date-picker>
+          </div>
+
+          <div class="col-md-5">
+            <app-text-input [formControl]="$any(registerForm.controls['country'])" [label]="'Country'"></app-text-input>
+          </div>
+          <div class="col-md-5">
+            <app-text-input [formControl]="$any(registerForm.controls['city'])" [label]="'City'"></app-text-input>
+          </div>
+            <div class="col-md-5 my-2">
+              <div class="gender-options">
+                <label class="gender-option">
+                  <input type="radio" class="form-check-input" value="male" formControlName="gender">
+                  <span>Male</span>
+                </label>
+                <label class="gender-option">
+                  <input type="radio" class="form-check-input" value="female" formControlName="gender">
+                  <span>Female</span>
+                </label>
+              </div>
+          </div>
+          <div class="col-md-5">
+            <app-text-input [formControl]="$any(registerForm.controls['password'])" [label]="'Password'" [type]="'password'" ></app-text-input>
+          </div>
+          <div class="col-md-5">
+            <app-text-input [formControl]="$any(registerForm.controls['confirmPassword'])" [label]="'Confirm Password'" [type]="'password'"></app-text-input>
+          </div>
         </div>
-        <div class="mb-3">
-          <input type="password" name="password" class="form-control form-input" placeholder="Create a secure password"
-            [(ngModel)]="model.password" required />
-        </div>
-        @if(validationErrors.length > 0) {
-        <div class="text-danger my-3">
-          <ul class="mb-0">
-            @for(error of validationErrors; track $index) {
-            <li>{{error}}</li>
-            }
-          </ul>
-        </div>
-        }
-        <div class="mb-3">
-          <button class="btn btn-primary w-100 custom-btn-primary" type="submit">
+        <div class="action-buttons mt-3">
+          <button [disabled]="!registerForm.valid" class="btn w-100 custom-btn mb-2" type="submit">
             <i class="fa-solid fa-rocket me-2"></i>
             Get Started
           </button>
-        </div>
-        <div class="text-center">
-          <button class="btn btn-secondary custom-btn-secondary" type="button" (click)="cancel()">
+          <button class="btn btn-secondary w-100 custom-btn-secondary" type="button" (click)="cancel()">
             <i class="fa-solid fa-arrow-left me-2"></i>
             Back to Home
           </button>

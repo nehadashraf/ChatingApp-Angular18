@@ -1,0 +1,11 @@
+<div class="mb-3">
+  <input [class.is-invalid]="control.touched && control.invalid" [type]="type()" [formControl]="control"
+    class="py-2 form-control" placeholder={{label()}} />
+  <div *ngIf="control?.hasError('required')" class="invalid-feedback">Please choose a {{label().toLowerCase()}}.</div>
+  <div *ngIf="control?.hasError('minlength')" class="invalid-feedback">{{label().toLowerCase()}} must be at
+    least {{control.errors?.['minlength'].requiredLength}} characters.</div>
+  <div *ngIf="control?.hasError('maxlength')" class="invalid-feedback">{{label().toLowerCase()}} must be at
+    most {{control.errors?.['maxlength'].requiredLength}} characters.</div>
+  <div *ngIf="control?.hasError('isMatching')" class="invalid-feedback">must be
+    the same as password.</div>
+</div>
