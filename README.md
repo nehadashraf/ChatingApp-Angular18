@@ -28,3 +28,21 @@
 - **Form Validation**
   - Client-side validation using Angular Reactive Forms
   - Clear and user-friendly error messages
+## 📸 Application Screenshots
+
+### Login Page
+![Login](FireShot/login.png)
+
+### Register Page
+![Register](FireShot/register.png)
+
+### Members Page
+![Chat](FireShot/members.png)
+
+### Member Details Page
+![Profile](FireShot/member.png)
+
+### Edit Photo Page
+![Profile](FireShot/AddPhotos.png)
+![Profile](FireShot/AddPhoto2.png)
+
